@@ -2,7 +2,7 @@
 
 Angajati::Angajati()
 {
-    ID[0] = '\0';
+    ID = 0;
     Data_Nasterii[0] = '\0';
     Data_Angajarii[0] = '\0';
     nume = NULL;
@@ -10,9 +10,8 @@ Angajati::Angajati()
     Coeficient_Salarial = 0;
 }
 
-Angajati::Angajati(const char id[], const char data_n[], const char data_a[], const char *nume, const char *prenume)
+Angajati::Angajati(const char data_n[], const char data_a[], const char *nume, const char *prenume)
 {
-    strcpy(ID, id);
     strcpy(Data_Nasterii, data_n);
     strcpy(Data_Angajarii, data_a);
     this->nume = strdup(nume);
@@ -32,7 +31,7 @@ Angajati::Angajati(const Angajati &a)
 
 Angajati &Angajati::operator=(const Angajati &a)
 {
-    strcpy(ID, a.ID);
+    ID = a.ID;
     strcpy(Data_Nasterii, a.Data_Nasterii);
     strcpy(Data_Angajarii, a.Data_Angajarii);
     nume = strdup(a.nume);
@@ -43,8 +42,27 @@ Angajati &Angajati::operator=(const Angajati &a)
 
 istream &Angajati::citire(istream &dev)
 {
-    cout << "\nID: ";   /********** ID INCREMENTAT TO DO ***********/
-    dev >> ID;
+    /********* ID *********/
+    if( ListaAngajati.size() == 0 ) ID = 1;
+    else 
+    {
+        for(unsigned i = 1; i <= ListaAngajati.size(); i++)
+        {
+            unsigned ok = 0;
+            for(unsigned j = 0; j < ListaAngajati.size(); j++)
+                if( i == ListaAngajati[j]->getID() )
+                {
+                    ok = 1;
+                    break;
+                }
+            if(ok == 0)
+            {
+                ID = i;
+                break;
+            }
+        }
+        if(ID == 0) ID = ListaAngajati.size() + 1;
+    }
 
     /********* NUME *********/
 
@@ -370,7 +388,7 @@ float Angajati::getSalariu()
     return (timePtr->tm_year + 1900 - an_angajare) * Coeficient_Salarial * 1000;
 }
 
-char * Angajati::getID()
+unsigned Angajati::getID()
 {
     return ID;
 }

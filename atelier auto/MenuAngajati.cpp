@@ -59,6 +59,7 @@ void stergereAngajat()
     cout << "Introduceti ID-ul angajatului pe care doriti sa il stergeti sau tastati \"b\" pentru a va intoarce la meniu: ";
     char id[5];
     cin >> id;
+    int ID = atoi(id);
     if (strcmp(id, "b") == 0)
     {
         MenuAngajati();
@@ -67,7 +68,7 @@ void stergereAngajat()
     vector<Angajati *>::iterator it = ListaAngajati.begin();
     while (it != ListaAngajati.end())
     {
-        if (strcmp(id, ListaAngajati[i]->getID()) == 0)
+        if (ID == ListaAngajati[i]->getID())
         {
             break;
         }
@@ -103,6 +104,7 @@ void editareAngajat()
     cout << "Introduceti ID-ul angajatului pe care doriti sa il modificati sau tastati \"b\" pentru a va intoarce la meniu: ";
     char id[5];
     cin >> id;
+    int ID = atoi(id);
     if (strcmp(id, "b") == 0)
     {
         MenuAngajati();
@@ -110,7 +112,7 @@ void editareAngajat()
     unsigned i = 0;
     while ( i < ListaAngajati.size())
     {
-        if (strcmp(id, ListaAngajati[i]->getID()) == 0)
+        if (ID == ListaAngajati[i]->getID())
         {
             break;
         }
@@ -545,10 +547,11 @@ void salariuAngajat()
     {
         MenuAngajati();
     }
+    int ID = atoi(id);
     unsigned i = 0;
     while (i < ListaAngajati.size())
     {
-        if (strcmp(id, ListaAngajati[i]->getID()) == 0)
+        if (ID == ListaAngajati[i]->getID())
         {
             break;
         }

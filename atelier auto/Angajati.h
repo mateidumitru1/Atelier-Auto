@@ -5,17 +5,21 @@
 #include <cstring>
 #include <stdlib.h>
 #include <ctime>
+#include <vector>
+
+
 
 using namespace std;
 
 class Angajati{
     protected:
-        char ID[5], Data_Nasterii[11], Data_Angajarii[11];
+        unsigned ID;
+        char Data_Nasterii[11], Data_Angajarii[11];
         char *nume, *prenume;
         float Coeficient_Salarial;
     public:
         Angajati();
-        Angajati(const char[], const char[], const char[], const char*, const char*);
+        Angajati(const char[], const char[], const char*, const char*);
         Angajati(const Angajati &);
         ~Angajati();
         Angajati & operator=(const Angajati &);
@@ -24,12 +28,14 @@ class Angajati{
         istream & citire(istream & dev);
         virtual ostream & afisare(ostream & dev);
         float getSalariu();
-        char *getID();
+        unsigned getID();
         void setNume(char*);
         void setPrenume(char*);
         void setDataNasterii(char*);
         void setDataAngajarii(char*);
         float getCoeficient();
 };
+
+extern vector<Angajati*> ListaAngajati;
 
 #endif

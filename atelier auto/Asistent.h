@@ -6,7 +6,7 @@
 class Asistent: public Angajati{
     public:
         Asistent();
-        Asistent(const char[], const char[], const char[], const char*, const char*);
+        Asistent(const char[], const char[], const char*, const char*);
         Asistent(const Asistent &);
         Asistent(const Angajati &);
         Asistent & operator=(const Asistent &);

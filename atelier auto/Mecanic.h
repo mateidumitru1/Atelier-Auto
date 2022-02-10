@@ -6,7 +6,7 @@
 class Mecanic: public Angajati{
     public:
         Mecanic();
-        Mecanic(const char[], const char[], const char[], const char*, const char*);
+        Mecanic(const char[], const char[], const char*, const char*);
         Mecanic(const Mecanic &);
         Mecanic(const Angajati &);
         Mecanic & operator=(const Mecanic &);

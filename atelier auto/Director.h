@@ -6,7 +6,7 @@
 class Director: public Angajati{
     public:
         Director();
-        Director(const char[], const char[], const char[], const char*, const char*);
+        Director(const char[], const char[], const char*, const char*);
         Director(const Director &);
         Director(const Angajati &);
         Director & operator=(const Director &);

@@ -5,7 +5,7 @@ Asistent::Asistent(): Angajati()
     Coeficient_Salarial = 1;
 }
 
-Asistent::Asistent(const char id[], const char data_n[], const char data_a[], const char *nume, const char *prenume): Angajati(id, data_n, data_a, nume, prenume)
+Asistent::Asistent(const char data_n[], const char data_a[], const char *nume, const char *prenume): Angajati(data_n, data_a, nume, prenume)
 {
     Coeficient_Salarial = 1;
 }
