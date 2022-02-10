@@ -8,6 +8,7 @@ class Asistent: public Angajati{
         Asistent();
         Asistent(const char[], const char[], const char[], const char*, const char*);
         Asistent(const Asistent &);
+        Asistent(const Angajati &);
         Asistent & operator=(const Asistent &);
         istream & citire(istream &);
         friend istream & operator>>(istream & dev, Asistent &);

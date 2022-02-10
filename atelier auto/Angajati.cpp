@@ -70,6 +70,9 @@ istream &Angajati::citire(istream &dev)
     cout << "\n               Zi(ZZ): ";
     dev >> zi;
 
+    /***********  Daca ziua nu are 2 cifre, daca prima cifra >= 4 sau daca contine alte caractere decat cifre, se repeta citirea zilei.  ***********/
+
+
     while (strlen(zi) != 2 || zi[0] > '3' || (zi[0] == '3' && zi[1] > '1') || ( zi[0] > '9' || zi[0] < '0' ) || ( zi[1] > '9' || zi[1] < '0' ))
     {
         cout << "\nIntroduceti o zi valida!(ZZ)";
@@ -80,12 +83,16 @@ istream &Angajati::citire(istream &dev)
     cout << "\n               Luna(LL): ";
     dev >> luna;
 
+    /*********** Daca luna nu are 2 cifre, daca are prima cifra >= 2, daca luna e >= 13 sau daca contine alte caractere decat cifre, se repeta citirea lunii. ***********/
+
     while (strlen(luna) != 2 || luna[0] > '1' || (luna[0] == '1' && luna[1] > '2' ) || (luna[0] < '0' && luna[0] > '9') || (luna[1] < '0' && luna[1] > '9') )
     {
         cout << "\nIntroduceti o luna valida!(LL)";
         cout << "\n               Luna(LL): ";
         dev >> luna;
     }
+
+    /*********** Daca luna 02 (adica februarie) are mai mult de 29 de zile sau daca lunile aprile, iunie, septembrie sau noiembrie au 31 de zile, se repeta citirea zilei si a lunii.  ***********/
 
     while ( (zi[0] == '3' && luna[0] == '0' && luna[1] == '2') || ( strcmp(zi, "31") == 0 && ( strcmp(luna, "04") == 0 || strcmp(luna, "06") == 0 || strcmp(luna, "09") == 0 || strcmp(luna, "11") == 0 ) ) )
     {
@@ -115,6 +122,8 @@ istream &Angajati::citire(istream &dev)
 
     cin >> an;
 
+    /*********** Daca anul nu are 4 cifre sau daca contine alte caractere decat cifre, se repeta citirea. ***********/
+
     while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
     {
         cout << "\nIntroduceti un an valid!(AA)";
@@ -122,7 +131,9 @@ istream &Angajati::citire(istream &dev)
         dev >> an;
     }
 
-    d = atoi(an);
+    d = atoi(an); // transform anul in INT ca sa pot verifica daca e an bisect
+
+    /*********** Daca nu e an bisect si februarie are 29 de zile, se repeta intreaga citire. ***********/
 
     while (d % 4 != 0 && strcmp(luna, "02") == 0 && strcmp(zi, "29") == 0)
     {
@@ -199,6 +210,9 @@ istream &Angajati::citire(istream &dev)
     cout << "\n               Zi(ZZ): ";
     dev >> zi;
 
+    /***********  Daca ziua nu are 2 cifre, daca prima cifra >= 4 sau daca contine alte caractere decat cifre, se repeta citirea zilei.  ***********/
+
+
     while (strlen(zi) != 2 || zi[0] > '3' || (zi[0] == '3' && zi[1] > '1') || ( zi[0] > '9' || zi[0] < '0' ) || ( zi[1] > '9' || zi[1] < '0' ))
     {
         cout << "\nIntroduceti o zi valida!(ZZ)";
@@ -209,12 +223,16 @@ istream &Angajati::citire(istream &dev)
     cout << "\n               Luna(LL): ";
     dev >> luna;
 
+    /*********** Daca luna nu are 2 cifre, daca are prima cifra >= 2, daca luna e >= 13 sau daca contine alte caractere decat cifre, se repeta citirea lunii. ***********/
+
     while (strlen(luna) != 2 || luna[0] > '1' || (luna[0] == '1' && luna[1] > '2' ) || (luna[0] < '0' && luna[0] > '9') || (luna[1] < '0' && luna[1] > '9') )
     {
         cout << "\nIntroduceti o luna valida!(LL)";
         cout << "\n               Luna(LL): ";
         dev >> luna;
     }
+
+    /*********** Daca luna 02 (adica februarie) are mai mult de 29 de zile sau daca lunile aprile, iunie, septembrie sau noiembrie au 31 de zile, se repeta citirea zilei si a lunii.  ***********/
 
     while ( (zi[0] == '3' && luna[0] == '0' && luna[1] == '2') || ( strcmp(zi, "31") == 0 && ( strcmp(luna, "04") == 0 || strcmp(luna, "06") == 0 || strcmp(luna, "09") == 0 || strcmp(luna, "11") == 0 ) ) )
     {
@@ -244,6 +262,8 @@ istream &Angajati::citire(istream &dev)
 
     cin >> an;
 
+    /*********** Daca anul nu are 4 cifre sau daca contine alte caractere decat cifre, se repeta citirea. ***********/
+
     while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
     {
         cout << "\nIntroduceti un an valid!(AA)";
@@ -251,7 +271,9 @@ istream &Angajati::citire(istream &dev)
         dev >> an;
     }
 
-    d = atoi(an);
+    d = atoi(an); // transform anul in INT ca sa pot verifica daca e an bisect
+
+    /*********** Daca nu e an bisect si februarie are 29 de zile, se repeta intreaga citire. ***********/
 
     while (d % 4 != 0 && strcmp(luna, "02") == 0 && strcmp(zi, "29") == 0)
     {
@@ -361,4 +383,19 @@ void Angajati::setNume(char * nume)
 void Angajati::setPrenume(char * prenume)
 {
     this->prenume = strdup(prenume);
+}
+
+void Angajati::setDataAngajarii(char * DataAngajarii)
+{
+    strcpy(this->Data_Angajarii, DataAngajarii);
+}
+
+void Angajati::setDataNasterii(char * DataNasterii)
+{
+    strcpy(this->Data_Nasterii, DataNasterii);
+}
+
+float Angajati::getCoeficient()
+{
+    return Coeficient_Salarial;
 }

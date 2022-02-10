@@ -15,6 +15,11 @@ Director::Director(const Director & a)
     *this = a;
 }
 
+Director::Director(const Angajati & a): Angajati(a)
+{
+    Coeficient_Salarial = 2;
+}
+
 Director & Director::operator=(const Director & a)
 {
     Angajati::operator=(a);
@@ -33,6 +38,7 @@ istream & operator>>(istream & dev, Director & a)
 
 ostream & Director::afisare(ostream & dev)
 {
+    cout << "**** DIRECTOR ****\n";
     Angajati::afisare(dev);
     return dev;
 }

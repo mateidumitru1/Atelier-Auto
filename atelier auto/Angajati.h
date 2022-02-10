@@ -27,6 +27,9 @@ class Angajati{
         char *getID();
         void setNume(char*);
         void setPrenume(char*);
+        void setDataNasterii(char*);
+        void setDataAngajarii(char*);
+        float getCoeficient();
 };
 
 #endif

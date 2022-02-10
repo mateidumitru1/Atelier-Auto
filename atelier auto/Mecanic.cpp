@@ -15,6 +15,11 @@ Mecanic::Mecanic(const Mecanic & a)
     *this = a;
 }
 
+Mecanic::Mecanic(const Angajati & a): Angajati(a)
+{
+    Coeficient_Salarial = 1.5;
+}
+
 Mecanic & Mecanic::operator=(const Mecanic & a)
 {
     Angajati::operator=(a);
@@ -33,6 +38,7 @@ istream & operator>>(istream & dev, Mecanic & a)
 
 ostream & Mecanic::afisare(ostream & dev)
 {
+    cout << "**** MECANIC ****\n";
     Angajati::afisare(dev);
     return dev;
 }

@@ -8,6 +8,7 @@ class Mecanic: public Angajati{
         Mecanic();
         Mecanic(const char[], const char[], const char[], const char*, const char*);
         Mecanic(const Mecanic &);
+        Mecanic(const Angajati &);
         Mecanic & operator=(const Mecanic &);
         istream & citire(istream & dev);
         friend istream & operator>>(istream & dev, Mecanic &);

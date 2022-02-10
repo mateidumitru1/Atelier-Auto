@@ -15,6 +15,11 @@ Asistent::Asistent(const Asistent & a)
     *this = a;
 }
 
+Asistent::Asistent(const Angajati & a): Angajati(a)
+{
+    Coeficient_Salarial = 1;
+}
+
 Asistent & Asistent::operator=(const Asistent & a)
 {
     Angajati::operator=(a);
@@ -33,6 +38,7 @@ istream & operator>>(istream & dev, Asistent & a)
 
 ostream & Asistent::afisare(ostream & dev)
 {
+    cout << "**** ASISTENT ****\n";
     Angajati::afisare(dev);
     return dev;
 }
