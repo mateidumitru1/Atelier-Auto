@@ -110,7 +110,7 @@ void editareAngajat()
         MenuAngajati();
     }
     unsigned i = 0;
-    while ( i < ListaAngajati.size())
+    while (i < ListaAngajati.size())
     {
         if (ID == ListaAngajati[i]->getID())
         {
@@ -220,14 +220,18 @@ void editareAngajat()
             cout << "\n               An(AAAA): ";
 
             cin >> an;
-
+            unsigned AN = atoi(an);
+            time_t t = time(NULL);
+            tm *timePtr = localtime(&t);
             /*********** Daca anul nu are 4 cifre sau daca contine alte caractere decat cifre, se repeta citirea. ***********/
 
-            while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9') || (an[1] < '0' || an[1] > '9') || (an[2] < '0' || an[2] > '9') || (an[3] < '0' || an[3] > '9'))
+            while (strlen(an) != 4 || timePtr->tm_year + 1900 - AN < 18 || (an[0] < '0' || an[0] > '9') || (an[1] < '0' || an[1] > '9') || (an[2] < '0' || an[2] > '9') || (an[3] < '0' || an[3] > '9'))
             {
-                cout << "\nIntroduceti un an valid!(AA)";
+                cout << "\nIntroduceti un an valid!(AAAA)";
                 cout << "\n               An(AAAA): ";
                 cin >> an;
+                unsigned AN = atoi(an);
+
             }
 
             d = atoi(an); // transform anul in INT ca sa pot verifica daca e an bisect
@@ -285,11 +289,17 @@ void editareAngajat()
 
                 cin >> an;
 
-                while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9') || (an[1] < '0' || an[1] > '9') || (an[2] < '0' || an[2] > '9') || (an[3] < '0' || an[3] > '9'))
+                unsigned AN = atoi(an);
+                time_t t = time(NULL);
+                tm *timePtr = localtime(&t);
+
+                while (strlen(an) != 4 || timePtr->tm_year + 1900 - AN < 18 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
                 {
-                    cout << "\nIntroduceti un an valid!(AA)";
+                    cout << "\nIntroduceti un an valid!(AAAA)";
                     cout << "\n               An(AAAA): ";
                     cin >> an;
+                    unsigned AN = atoi(an);
+
                 }
                 d = atoi(an);
             }
@@ -309,7 +319,6 @@ void editareAngajat()
 
             break;
         }
-
 
         case '3':
         {
@@ -466,51 +475,54 @@ void editareAngajat()
             cout << "Daca v-ati razgandit tastati acum \"q\".\n\n";
             cout << "Angajatul selectat este ";
             char c;
-            if( ListaAngajati[i]->getCoeficient() == 1 )
+            if (ListaAngajati[i]->getCoeficient() == 1)
             {
                 cout << "asistent.\n\n";
                 c = 'a';
             }
-            else if( ListaAngajati[i]->getCoeficient() == 1.5 )
+            else if (ListaAngajati[i]->getCoeficient() == 1.5)
             {
                 cout << "mecanic.\n\n";
                 c = 'm';
             }
-            else if( ListaAngajati[i]->getCoeficient() == 2 )
+            else if (ListaAngajati[i]->getCoeficient() == 2)
             {
                 cout << "director.\n\n";
                 c = 'd';
             }
             cout << "Noul post ";
-            if( c == 'a' ) cout << "(m/d): ";
-            else if( c == 'm' ) cout << "(a/d): ";
-            else if( c == 'd' ) cout << "(a/m): ";
+            if (c == 'a')
+                cout << "(m/d): ";
+            else if (c == 'm')
+                cout << "(a/d): ";
+            else if (c == 'd')
+                cout << "(a/m): ";
             cin >> c;
-            switch(c)
+            switch (c)
             {
-                case 'a':
-                {
-                    Asistent *a = new Asistent(*ListaAngajati[i]);
-                    ListaAngajati[i] = a;
-                    break;
-                }
-                case 'm':
-                {
-                    Mecanic *m = new Mecanic(*ListaAngajati[i]);
-                    ListaAngajati[i] = m;
-                    break;
-                }
-                case 'd':
-                {
-                    Director *d = new Director(*ListaAngajati[i]);
-                    ListaAngajati[i] = d;
-                    break;
-                }
-                case 'q':
-                {
-                    MenuAngajati();
-                    break;
-                }
+            case 'a':
+            {
+                Asistent *a = new Asistent(*ListaAngajati[i]);
+                ListaAngajati[i] = a;
+                break;
+            }
+            case 'm':
+            {
+                Mecanic *m = new Mecanic(*ListaAngajati[i]);
+                ListaAngajati[i] = m;
+                break;
+            }
+            case 'd':
+            {
+                Director *d = new Director(*ListaAngajati[i]);
+                ListaAngajati[i] = d;
+                break;
+            }
+            case 'q':
+            {
+                MenuAngajati();
+                break;
+            }
             }
             system("cls");
             cout << "Postul a fost modificat cu succes.\n\nApasati ENTER pentru a continua.\n\n";

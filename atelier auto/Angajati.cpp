@@ -79,7 +79,7 @@ istream &Angajati::citire(istream &dev)
 
     /********* DATA NASTERII *********/
 
-    cout << "\nData Nasterii: ";
+    cout << "\nData Nasterii(angajatul trebuie sa aiba varsta mai mare de 18 ani):\n";
 
     char zi[3], luna[3], an[5];
 
@@ -138,15 +138,18 @@ istream &Angajati::citire(istream &dev)
 
     cout << "\n               An(AAAA): ";
 
-    cin >> an;
-
+    dev >> an;
+    unsigned AN = atoi(an);
+    time_t t = time(NULL);
+    tm * timePtr = localtime(&t);
     /*********** Daca anul nu are 4 cifre sau daca contine alte caractere decat cifre, se repeta citirea. ***********/
 
-    while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
+    while (strlen(an) != 4 || timePtr->tm_year + 1900 - AN < 18 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
     {
-        cout << "\nIntroduceti un an valid!(AA)";
+        cout << "\nIntroduceti un an valid!(AAAA)";
         cout << "\n               An(AAAA): ";
         dev >> an;
+        unsigned AN = atoi(an);
     }
 
     d = atoi(an); // transform anul in INT ca sa pot verifica daca e an bisect
@@ -202,13 +205,18 @@ istream &Angajati::citire(istream &dev)
 
         cout << "\n               An(AAAA): ";
 
-        cin >> an;
+        dev >> an;
 
-        while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
+        unsigned AN = atoi(an);
+        time_t t = time(NULL);
+        tm *timePtr = localtime(&t);
+
+        while (strlen(an) != 4 || timePtr->tm_year + 1900 - AN < 18 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
         {
-            cout << "\nIntroduceti un an valid!(AA)";
+            cout << "\nIntroduceti un an valid!(AAAA)";
             cout << "\n               An(AAAA): ";
             dev >> an;
+            unsigned AN = atoi(an);
         }
         d = atoi(an);
     }
@@ -278,7 +286,7 @@ istream &Angajati::citire(istream &dev)
 
     cout << "\n               An(AAAA): ";
 
-    cin >> an;
+    dev >> an;
 
     /*********** Daca anul nu are 4 cifre sau daca contine alte caractere decat cifre, se repeta citirea. ***********/
 
@@ -342,7 +350,7 @@ istream &Angajati::citire(istream &dev)
 
         cout << "\n               An(AAAA): ";
 
-        cin >> an;
+        dev >> an;
 
         while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
         {
