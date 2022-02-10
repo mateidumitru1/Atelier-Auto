@@ -139,24 +139,34 @@ istream &Angajati::citire(istream &dev)
     cout << "\n               An(AAAA): ";
 
     dev >> an;
-    unsigned AN = atoi(an);
     time_t t = time(NULL);
     tm * timePtr = localtime(&t);
+
     /*********** Daca anul nu are 4 cifre sau daca contine alte caractere decat cifre, se repeta citirea. ***********/
 
-    while (strlen(an) != 4 || timePtr->tm_year + 1900 - AN < 18 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
+    while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
     {
         cout << "\nIntroduceti un an valid!(AAAA)";
         cout << "\n               An(AAAA): ";
         dev >> an;
-        unsigned AN = atoi(an);
     }
 
     d = atoi(an); // transform anul in INT ca sa pot verifica daca e an bisect
 
     /*********** Daca nu e an bisect si februarie are 29 de zile, se repeta intreaga citire. ***********/
 
-    while (d % 4 != 0 && strcmp(luna, "02") == 0 && strcmp(zi, "29") == 0)
+    unsigned anv, lv, ziv;
+
+    anv = atoi(an);
+
+    if(luna[0] == '0')  lv = atoi(luna + 1);
+    else lv = atoi(luna);
+
+    if(zi[0] == '0') ziv = atoi(zi + 1);
+    else ziv = atoi(zi);
+
+
+    while ((d % 4 != 0 && strcmp(luna, "02") == 0 && strcmp(zi, "29") == 0) || (timePtr->tm_year + 1900 - anv < 18) || (timePtr->tm_year + 1900 - anv == 18 && timePtr->tm_mon + 1 < lv) || (timePtr->tm_year - anv + 1900 == 18 && timePtr->tm_mon + 1 == lv && ziv > timePtr->tm_mday) )
     {
         cout << "\nIntroduceti o data valida!(ZZ/LL/AAAA)";
         cout << "\n               Zi(ZZ): ";
@@ -207,18 +217,23 @@ istream &Angajati::citire(istream &dev)
 
         dev >> an;
 
-        unsigned AN = atoi(an);
-        time_t t = time(NULL);
-        tm *timePtr = localtime(&t);
+        t = time(NULL);
+        timePtr = localtime(&t);
 
-        while (strlen(an) != 4 || timePtr->tm_year + 1900 - AN < 18 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
+        while (strlen(an) != 4 || (an[0] < '0' || an[0] > '9' ) || (an[1] < '0' || an[1] > '9' ) || (an[2] < '0' || an[2] > '9' ) || (an[3] < '0' || an[3] > '9' ) )
         {
             cout << "\nIntroduceti un an valid!(AAAA)";
             cout << "\n               An(AAAA): ";
             dev >> an;
-            unsigned AN = atoi(an);
         }
         d = atoi(an);
+        anv = atoi(an);
+
+        if(luna[0] == '0')  lv = atoi(luna + 1);
+        else lv = atoi(luna);
+
+        if(zi[0] == '0') ziv = atoi(zi + 1);
+        else ziv = atoi(zi);
     }
 
     strcpy(Data_Nasterii, zi);
@@ -301,7 +316,19 @@ istream &Angajati::citire(istream &dev)
 
     /*********** Daca nu e an bisect si februarie are 29 de zile, se repeta intreaga citire. ***********/
 
-    while (d % 4 != 0 && strcmp(luna, "02") == 0 && strcmp(zi, "29") == 0)
+    t = time(NULL);
+    timePtr = localtime(&t);
+
+    anv, lv, ziv;
+    anv = atoi(an);
+
+    if(luna[0] == '0')  lv = atoi(luna + 1);
+    else lv = atoi(luna);
+
+    if(zi[0] == '0') ziv = atoi(zi + 1);
+    else ziv = atoi(zi);
+
+    while ((d % 4 != 0 && strcmp(luna, "02") == 0 && strcmp(zi, "29") == 0) || (anv > timePtr->tm_year + 1900) || (anv == timePtr->tm_year + 1900 && lv > timePtr->tm_mon + 1 ) || (anv == timePtr->tm_year + 1900 && lv == timePtr->tm_mon + 1 && ziv > timePtr->tm_mday) )
     {
         cout << "\nIntroduceti o data valida!(ZZ/LL/AAAA)";
         cout << "\n               Zi(ZZ): ";
@@ -358,6 +385,14 @@ istream &Angajati::citire(istream &dev)
             cout << "\n               An(AAAA): ";
             dev >> an;
         }
+        anv = atoi(an);
+
+        if(luna[0] == '0')  lv = atoi(luna + 1);
+        else lv = atoi(luna);
+
+        if(zi[0] == '0') ziv = atoi(zi + 1);
+        else ziv = atoi(zi);
+
         d = atoi(an);
     }
 
