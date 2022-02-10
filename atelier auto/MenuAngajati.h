@@ -16,5 +16,6 @@ void afisareAngajati();
 void adaugareAngajat();
 void stergereAngajat();
 void editareAngajat();
+void salariuAngajat();
 
 #endif

@@ -81,6 +81,7 @@ void SelectOptionMenuAngajati()
         }
         case '5':
         {
+            salariuAngajat();
             break;
         }
         case 'b':
