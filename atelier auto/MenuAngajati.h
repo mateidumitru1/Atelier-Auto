@@ -15,5 +15,6 @@ extern vector<Angajati*> ListaAngajati;
 void afisareAngajati();
 void adaugareAngajat();
 void stergereAngajat();
+void editareAngajat();
 
 #endif

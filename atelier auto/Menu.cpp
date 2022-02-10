@@ -47,7 +47,7 @@ void MenuAngajati()
     cout << "\t3. Stergere angajat\n";
     cout << "\t4. Editare angajat\n";
     cout << "\t5. Calcul salariu angajat\n\n";
-    cout << "\tTastati \"b\" pentru a reveni la meniul principal\n\n";
+    cout << "\tTastati \"b\" pentru a reveni la meniul principal.\n\n";
     cout << "\tTastati \"q\" pentru a iesi.\n\n";
     cout << "\tSelectati o optiune: ";
     SelectOptionMenuAngajati();
@@ -62,29 +62,21 @@ void SelectOptionMenuAngajati()
         case '1':
         {
             afisareAngajati();
-            fflush(stdin);
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            MenuAngajati();
             break;
         }
         case '2':
         {
             adaugareAngajat();
-            fflush(stdin);
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            MenuAngajati();
             break;
         }
         case '3':
         {
             stergereAngajat();
-            fflush(stdin);
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            MenuAngajati();
             break;
         }
         case '4':
         {
+            editareAngajat();
             break;
         }
         case '5':
@@ -101,4 +93,7 @@ void SelectOptionMenuAngajati()
             break;
         }
     }
+    fflush(stdin);
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    MenuAngajati();
 }
