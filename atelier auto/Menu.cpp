@@ -27,7 +27,7 @@ void SelectOptionMenu()
         }
         case '2':
         {
-
+            MenuMasini();
         }
         case 'q':
         {
