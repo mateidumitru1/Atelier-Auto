@@ -25,6 +25,8 @@ class Angajati{
         virtual ostream & afisare(ostream & dev);
         float getSalariu();
         char *getID();
+        void setNume(char*);
+        void setPrenume(char*);
 };
 
 #endif

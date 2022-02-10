@@ -43,15 +43,24 @@ Angajati &Angajati::operator=(const Angajati &a)
 
 istream &Angajati::citire(istream &dev)
 {
-    cout << "\nID: ";
+    cout << "\nID: ";   /********** ID INCREMENTAT TO DO ***********/
     dev >> ID;
+
+    /********* NUME *********/
+
     cout << "\nNume: ";
     char s[30];
     dev >> s;
     nume = strdup(s);
+
+    /********* PRENUME *********/
+
     cout << "\nPrenume: ";
     dev >> s;
     prenume = strdup(s);
+
+    /********* DATA NASTERII *********/
+
     cout << "\nData Nasterii: ";
 
     char zi[3], luna[3], an[5];
@@ -182,6 +191,7 @@ istream &Angajati::citire(istream &dev)
     strcat(Data_Nasterii, an);
 
 
+    /********* DATA ANGAJARII *********/
 
 
     cout << "\nData Angajarii(ZZ/LL/AAAA): ";
@@ -341,4 +351,14 @@ float Angajati::getSalariu()
 char * Angajati::getID()
 {
     return ID;
+}
+
+void Angajati::setNume(char * nume)
+{
+    this->nume = strdup(nume);
+}
+
+void Angajati::setPrenume(char * prenume)
+{
+    this->prenume = strdup(prenume);
 }
