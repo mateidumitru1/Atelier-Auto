@@ -9,6 +9,7 @@ class MasinaStandard: public Masini{
         MasinaStandard();
         MasinaStandard(const unsigned, const unsigned, const char, const char);
         MasinaStandard(const MasinaStandard &);
+        ~MasinaStandard(){}
         Masina & operator=(const MasinaStandard &);
         istream & citire(istream &);
         ostream & afisare(ostream &);

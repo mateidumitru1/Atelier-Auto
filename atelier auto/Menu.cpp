@@ -27,7 +27,18 @@ void SelectOptionMenu()
         }
         case '2':
         {
+            if(ListaAngajati.size() == 0)
+            {
+                system("cls");
+                cout << "Atelierul este inchis! Nu exista niciun angajat.\n\n";
+                cout << "Apasati ENTER pentru a continua.\n\n";
+                fflush(stdin);
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                Menu();
+                break;
+            }
             MenuMasini();
+            break;
         }
         case 'q':
         {
@@ -51,6 +62,15 @@ void MenuAngajati()
     cout << "\tTastati \"q\" pentru a iesi.\n\n";
     cout << "\tSelectati o optiune: ";
     SelectOptionMenuAngajati();
+}
+
+void MenuMasini()
+{
+    system("cls");
+    cout << "**************************** MENIU MASINI ****************************";
+    cout << "\n\n\tOptiuni\n\n";
+    cout << "\t1. Adaugare masina\n";
+    cout << "\t"
 }
 
 void SelectOptionMenuAngajati()
@@ -97,4 +117,9 @@ void SelectOptionMenuAngajati()
     fflush(stdin);
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
     MenuAngajati();
+}
+
+void SelectOptionMenuMasini()
+{
+    
 }

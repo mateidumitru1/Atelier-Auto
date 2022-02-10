@@ -7,7 +7,9 @@ extern vector<Angajati*> ListaAngajati;
 
 void Menu();
 void MenuAngajati();
+void MenuMasini();
 void SelectOptionMenu();
 void SelectOptionMenuAngajati();
+void SelectOptionMenuMasini();
 
 #endif

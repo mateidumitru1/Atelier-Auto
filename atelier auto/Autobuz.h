@@ -9,6 +9,7 @@ class Autobuz: public Masini{
         Autobuz();
         Autobuz(const unsigned, const unsigned, const char, const unsigned);
         Autobuz(const Autobuz &);
+        ~Autobuz(){}
         Masina & operator=(const Autobuz &);
         istream & citire(istream &);
         ostream & afisare(ostream &);

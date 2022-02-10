@@ -9,6 +9,7 @@ class Director: public Angajati{
         Director(const char[], const char[], const char*, const char*);
         Director(const Director &);
         Director(const Angajati &);
+        ~Director(){}
         Director & operator=(const Director &);
         istream & citire(istream & dev);
         friend istream & operator>>(istream & dev, Director &);

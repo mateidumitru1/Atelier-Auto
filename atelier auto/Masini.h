@@ -15,6 +15,7 @@ class Masini{
         Masini();
         Masini(const unsigned, const unsigned, const char);
         Masini(const Masini &);
+        ~Masini(){}
         Masini & operator=(const Masini &);
         istream & citire(istream &);
         ostream & afisare(ostream &);
