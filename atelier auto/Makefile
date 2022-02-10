@@ -3,3 +3,6 @@ build:
 
 run:
 	./main
+
+remove:
+	rm main.exe
